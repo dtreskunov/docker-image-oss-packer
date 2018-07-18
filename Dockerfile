@@ -1,7 +1,7 @@
 FROM hashicorp/packer:1.2.5
 
 RUN apk update
-RUN apk add build-base curl git openssh python3 python3-dev yaml-dev
+RUN apk add build-base curl git openssh python3 python3-dev yaml-dev zlib-dev
 RUN pip3 install --upgrade pip
 
 RUN mkdir /tmp/ruby \
