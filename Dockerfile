@@ -1,7 +1,7 @@
 FROM hashicorp/packer:1.2.5
 
 RUN apk update
-RUN apk add build-base curl git openssh python3 python3-dev yaml-dev zlib-dev
+RUN apk add build-base curl git openssh openssl-dev python3 python3-dev yaml-dev zlib-dev
 RUN pip3 install --upgrade pip
 
 RUN mkdir /tmp/ruby \
@@ -13,6 +13,10 @@ RUN mkdir /tmp/ruby \
     && cd ruby* \
     && patch -i ../*.patch \
     && ./configure --disable-install-doc \
+    && make \
+    && make install \
+    && cd ext/openssl \
+    && ruby extconf.rb \
     && make \
     && make install \
     && cd / \
