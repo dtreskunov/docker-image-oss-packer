@@ -1,4 +1,4 @@
-FROM hashicorp/packer:1.2.5
+FROM hashicorp/packer:1.3.1
 
 RUN apk update
 RUN apk add build-base curl git openssh openssl-dev python3 python3-dev yaml-dev zlib-dev
